@@ -1,5 +1,25 @@
 from flask import Flask, render_template
 
+PROF_LIST = [
+    'инженер-исследователь',
+    'пилот',
+    'строитель',
+    'экзобиолог',
+    'врач',
+    'инженер по терраформированию',
+    'климатолог',
+    'специалист по радиационной защите',
+    'астрогеолог',
+    'гляциолог',
+    'инженер жизнеобеспечения',
+    'метеоролог',
+    'оператор марсохода',
+    'киберинженер',
+    'штурман',
+    'пилот дронов'
+]
+
+
 app = Flask(__name__)
 
 
@@ -15,6 +35,12 @@ def training(prof):
     else:
         training_title, img = 'Научные симуляторы', '/static/img/science_simulators.png'
     return render_template('training.html', training_title=training_title, scheme=img)
+
+
+@app.route('/list_prof/<list_type>')
+def prof_list(list_type):
+    print(list_type)
+    return render_template('prof_list.html', list_type=list_type, prof_list=PROF_LIST)
 
 
 if __name__ == '__main__':
