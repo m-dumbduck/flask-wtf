@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Оформление каюты</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Цвет стен</th>
+          <th scope="col">Эмблема</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td><img src="{{ color }}"></td>
+            <td><img src="{{ photo }}"></td>
+        </tr>
+      </tbody>
+    </table>
+    {% for astronaut in astronauts %}
+        <div>
+            {{ astronaut }} - Каюта № {{ loop.index }}
+            {% if loop.first %} - капитан корабля {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

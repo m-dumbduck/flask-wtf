@@ -89,5 +89,25 @@ def distribution():
     return render_template('distribution.html', astronauts=ASTRONAUTS)
 
 
+@app.route('/table/<sex>/<int:age>')
+def table(sex, age):
+    color = ''
+    if age < 21:
+        if sex == 'female':
+            color = '/../static/img/kid_female_color.jpg'
+        elif sex == 'male':
+            color = '/../static/img/kid_male_color.jpg'
+    else:
+        if sex == 'female':
+            color = '/../static/img/adult_female_color.jpg'
+        elif sex == 'male':
+            color = '/../static/img/adult_male_color.jpg'
+    if age < 21:
+        photo = '/../static/img/kid.jpg'
+    else:
+        photo = '/../static/img/adult.jpg'
+    return render_template('cabin_decoration.html', photo=photo, color=color)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
