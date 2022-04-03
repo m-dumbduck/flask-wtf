@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+from werkzeug.utils import redirect
+
+from forms.emergency_access import EmergencyAccessForm
 
 PROF_LIST = [
     'инженер-исследователь',
@@ -31,6 +34,8 @@ AUTO_ANSWER = {
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
 
 @app.route('/<title>')
 def index(title):
@@ -56,6 +61,19 @@ def prof_list(list_type):
 @app.route('/auto_answer')
 def answer():
     return render_template('answer.html', data=AUTO_ANSWER)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = EmergencyAccessForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('emergency_access.html', form=form)
+
+
+@app.route('/success')
+def success():
+    return 'Форма успешно отправлена'
 
 
 if __name__ == '__main__':
