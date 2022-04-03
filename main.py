@@ -18,7 +18,16 @@ PROF_LIST = [
     'штурман',
     'пилот дронов'
 ]
-
+AUTO_ANSWER = {
+    'title': '',
+    'surname': 'Watny',
+    'name': 'Mark',
+    'education': 'выше среднего',
+    'profession': 'штурман марсохода',
+    'sex': 'male',
+    'motivation': 'Всегда мечтал застрять на Марсе!',
+    'ready': 'True'
+}
 
 app = Flask(__name__)
 
@@ -41,6 +50,12 @@ def training(prof):
 def prof_list(list_type):
     print(list_type)
     return render_template('prof_list.html', list_type=list_type, prof_list=PROF_LIST)
+
+
+@app.route('/answer')
+@app.route('/auto_answer')
+def answer():
+    return render_template('answer.html', data=AUTO_ANSWER)
 
 
 if __name__ == '__main__':

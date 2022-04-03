@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% set item_list = ['Фамилия:', 'Имя:', 'Образование:', 'Профессия:', 'Пол:', 'Мотивация:', 'Готовы остаться на Марсе?'] %}
+    <div class="person_data">{{ item_list[0] }}{{ "\t" }}{{ data['surname'] }}</div>
+    <div class="person_data">{{ item_list[1] }}{{ "\t" }}{{ data['name'] }}</div>
+    <div class="person_data">{{ item_list[2] }}{{ "\t" }}{{ data['education'] }}</div>
+    <div class="person_data">{{ item_list[3] }}{{ "\t" }}{{ data['profession'] }}</div>
+    <div class="person_data">{{ item_list[4] }}{{ "\t" }}{{ data['sex'] }}</div>
+    <div class="person_data">{{ item_list[5] }}{{ "\t" }}{{ data['motivation'] }}</div>
+    <div class="person_data">{{ item_list[6] }}{{ "\t" }}{{ data['ready'] }}</div>
+{% endblock %}
