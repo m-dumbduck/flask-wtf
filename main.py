@@ -31,6 +31,14 @@ AUTO_ANSWER = {
     'motivation': 'Всегда мечтал застрять на Марсе!',
     'ready': 'True'
 }
+ASTRONAUTS = [
+    'Ридли Скотт',
+    'Энди Уир',
+    'Марк Уотни',
+    'Венката Капур',
+    'Тедди Сандерс',
+    'Шон Бин'
+]
 
 app = Flask(__name__)
 
@@ -74,6 +82,11 @@ def login():
 @app.route('/success')
 def success():
     return 'Форма успешно отправлена'
+
+
+@app.route('/distribution')
+def distribution():
+    return render_template('distribution.html', astronauts=ASTRONAUTS)
 
 
 if __name__ == '__main__':
