@@ -1,7 +1,10 @@
+import os
+
 from flask import Flask, render_template
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
 
 from forms.emergency_access import EmergencyAccessForm
+from forms.mars_gallery import MarsGalleryUpload
 
 PROF_LIST = [
     'инженер-исследователь',
@@ -107,6 +110,17 @@ def table(sex, age):
     else:
         photo = '/../static/img/adult.jpg'
     return render_template('cabin_decoration.html', photo=photo, color=color)
+
+
+@app.route('/gallery', methods=['GET', 'POST'])
+def gallery():
+    form = MarsGalleryUpload()
+    images = os.listdir('static/img/mars_gallery')
+    if form.validate_on_submit():
+        filename = secure_filename(form.file.data.filename)
+        photo = form.file.data.save(f'static/img/mars_gallery/' + filename)
+        return redirect('/gallery')
+    return render_template('gallery.html', images=images, form=form)
 
 
 if __name__ == '__main__':
