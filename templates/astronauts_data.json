@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Ридли Скотт",
+    "image": "/../static/img/astronauts/skott.jpg",
+    "prof_list": [
+      "инженер-исследователь",
+      "пилот",
+      "строитель"
+    ]
+  },
+  {
+    "name": "Энди Уир",
+    "image": "/../static/img/adult.jpg",
+    "prof_list": [
+      "врач",
+      "инженер по терраформированию",
+      "климатолог"
+    ]
+  },
+  {
+    "name": "Марк Уотни",
+    "image": "/../static/img/kid.jpg",
+    "prof_list": [
+      "климатолог",
+      "специалист по радиационной защите",
+      "астрогеолог"
+    ]
+  },
+  {
+    "name": "Венката Капур",
+    "image": "/../static/img/astronauts/kapoor.jpg",
+    "prof_list": [
+      "гляциолог",
+      "инженер жизнеобеспечения",
+      "метеоролог"
+    ]
+  },
+  {
+    "name": "Тедди Сандерс",
+    "image": "/../static/img/astronauts/sanders.jpg",
+    "prof_list": [
+      "штурман",
+      "пилот дронов"
+    ]
+  },
+  {
+    "name": "Шон Бин",
+    "image": "/../static/img/astronauts/bin.png",
+    "prof_list": [
+      "оператор марсохода",
+      "штурман"
+    ]
+  }
+]

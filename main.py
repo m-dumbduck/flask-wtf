@@ -1,3 +1,4 @@
+import json
 import os
 
 from flask import Flask, render_template
@@ -118,9 +119,16 @@ def gallery():
     images = os.listdir('static/img/mars_gallery')
     if form.validate_on_submit():
         filename = secure_filename(form.file.data.filename)
-        photo = form.file.data.save(f'static/img/mars_gallery/' + filename)
+        form.file.data.save(f'static/img/mars_gallery/' + filename)
         return redirect('/gallery')
     return render_template('gallery.html', images=images, form=form)
+
+
+@app.route('/member')
+def member():
+    with open('templates/astronauts_data.json', 'r', encoding='UTF-8') as file:
+        data = json.load(file)
+    return render_template('member.html', astronauts=data)
 
 
 if __name__ == '__main__':
