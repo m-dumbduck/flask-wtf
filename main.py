@@ -115,10 +115,11 @@ def table(sex, age):
 @app.route('/gallery', methods=['GET', 'POST'])
 def gallery():
     form = MarsGalleryUpload()
+
     images = os.listdir('static/img/mars_gallery')
     if form.validate_on_submit():
         filename = secure_filename(form.file.data.filename)
-        photo = form.file.data.save(f'static/img/mars_gallery/' + filename)
+        form.file.data.save(f'static/img/mars_gallery/' + filename)
         return redirect('/gallery')
     return render_template('gallery.html', images=images, form=form)
 
